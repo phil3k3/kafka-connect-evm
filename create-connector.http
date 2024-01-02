@@ -1,0 +1,69 @@
+POST https://polygon-mumbai-bor.publicnode.com
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getFilterLogs",
+  "params": [
+    "0xffc051d4eeb96a654ac85ba28cf34129"
+  ],
+  "id": 1
+}
+
+###
+POST https://polygon-mumbai-bor.publicnode.com
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "eth_newFilter",
+  "params": [
+    {
+      "fromBlock": "0xe20360",
+      "toBlock": "0xe20411",
+      "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "topics": []
+    }
+  ],
+  "id": 1
+}
+
+###
+POST https://polygon-mumbai-bor.publicnode.com
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "eth_newFilter",
+  "params": [
+    {
+      "topics": [
+        "StreamStarted(address, string, int96)"
+      ],
+      "fromBlock": "0x2a49db4",
+      "toBlock": "0x2a49db6",
+      "address": [
+        "0x606265A4A8A8A8599CFe9B952108c64C05978E41"
+      ]
+    }
+  ],
+  "id": 0
+}
+
+###
+PUT http://localhost:8083/connectors/evm/config
+Content-Type: application/json
+
+{
+  "connector.class": "at.fincloud.Web3SourceConnector",
+  "tasks.max": "1",
+  "topics": "test-topic",
+  "contract.addresses": "0x606265A4A8A8A8599CFe9B952108c64C05978E41",
+  "rpc.url": "https://gateway.tenderly.co/public/polygon-mumbai",
+  "block.from": "43206757",
+  "block.to": "43767970",
+  "etherscan.uri": "https://mumbai.polygonscan.com/api",
+  "etherscan.api.key": "{{ETHERSCAN_API_KEY}}",
+  "topic": "test-topic"
+}
+

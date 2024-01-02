@@ -1,0 +1,268 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract CFAv1Forwarder",
+        "name": "cfaAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "contract ISuperToken",
+        "name": "superToken",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "defaultTarget",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "partnerId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "cost",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "duration",
+        "type": "uint256"
+      }
+    ],
+    "name": "StreamOutOfFunds",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "partnerId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "int96",
+        "name": "rate",
+        "type": "int96"
+      }
+    ],
+    "name": "StreamStarted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "partnerId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "cost",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "duration",
+        "type": "uint256"
+      }
+    ],
+    "name": "StreamStopped",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "getSender",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "getStreamSize",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "offset",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "limit",
+        "type": "uint256"
+      }
+    ],
+    "name": "getStreamsPaged",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "partnerId",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "startTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "balanceBefore",
+            "type": "uint256"
+          },
+          {
+            "internalType": "int96",
+            "name": "rate",
+            "type": "int96"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "cost",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "duration",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Streams.Invoice",
+            "name": "invoice",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Streams.Stream[]",
+        "name": "streams",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "nextOffset",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "defaultTarget",
+        "type": "address"
+      }
+    ],
+    "name": "setDefaultTarget",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "partnerId",
+        "type": "string"
+      },
+      {
+        "internalType": "int96",
+        "name": "rate",
+        "type": "int96"
+      }
+    ],
+    "name": "startStream",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "stopStream",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
